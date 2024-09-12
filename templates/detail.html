@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+<div class="div row">
+
+
+    <div class="div col-sm-6">
+        <h1 class="alert alert-warning text-center"><i>MOVIES DETAIL</i></h1>
+        <img src="{{detail.image.url}}">
+
+
+
+    </div>
+    <div class="div col-sm-6">
+<h2 >MOVIE NAME</h2>
+<p>{{detail.movie_name}}</p>
+
+<h2>DESCRIPTION</h2>
+<p>{{detail.discription}}</p>
+
+<h2>POSTED BY</h2>
+<p>{{detail.owner}}</p>
+
+<a href="{% url 'show_movie' %}" class="btn btn-outline-info">show_movie</a>
+    </div>
+
+</div>
+
+
+    
+{% endblock content %}
+    

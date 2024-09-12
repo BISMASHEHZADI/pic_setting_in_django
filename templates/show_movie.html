@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for i in movies %}
+            <div class="col-md-4 mb-4"> <!-- Added mb-4 for spacing between rows -->
+                <div class="card h-100"> <!-- Ensure cards take full height of their column -->
+                    <img class="card-img-top" src="{{ i.image.url }}" alt="{{ i.owner }}" style="object-fit: cover; height: 400px;"> <!-- Adjust height as needed -->
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.movie_name }}</h5>
+                        <p class="card-text">{{ i.discription }}</p>
+
+                        <form action="{% url 'delete' i.id %}" method="post">
+                            {% csrf_token %}
+
+                            {% if i.owner == user %}
+                            
+                                <!-- Agar user owner hai, to edit aur delete buttons dikhao -->
+                                <a href="{% url 'detail' i.id %}" class="btn btn-outline-primary">Detail</a>
+                                <a href="{% url 'edit' i.id %}" class="btn btn-outline-success">Edit</a>
+                                <a href="{% url 'movie_add' %}" class="btn btn-outline-warning">add_movie</a>
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+
+                                
+                            {% else %}
+                                <!-- Agar user owner nahi hai, to bas view detail dikhao -->
+                                <p >You are not the owner of this movie.</p>
+                            {% endif %}
+
+                       </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{%load crispy_forms_tags %} 
+
+
+{% block content %}
+<div class="div row">
+
+    <div class="div col-sm-6 offset-3">
+        <h1 class="alert alert-danger text-center">REGISTRATION PAGE</h1>
+
+        
+        <form action="" method="post">
+            
+            {{ form|crispy }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary mt-2">register</button>
+
+            
+            <a href="{% url 'login' %}" class="btn btn-outline-warning mt-2">go_to_login_page</a>
+
+        </form>
+        
+    </div>
+</div>
+    
+{% endblock content %}
+    

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="div row">
+    <div class="div col-sm-6 offset-3">
+        <h2 class="alert alert-secondary text-center"><i>🎞🎞ADD YOUR FAVOURITES MOVIES🎞🎞</i></h2>
+        
+
+<form method="post" enctype="multipart/form-data">
+
+    {{form.as_p}}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-danger shadow">submit</button>
+    <a href="{% url 'show_movie' %}" class="btn btn-outline-success shadow">show_movies</a>
+</form>
+</div>
+</div>
+    
+{% endblock content %}
+    
